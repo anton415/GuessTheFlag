@@ -44,19 +44,14 @@ struct ContentView: View {
                     
                     ForEach(0..<3) { number in
                         Button {
-                            withAnimation {
-                                if (number == correctAnswer) {
-                                    animationAmount += 360
-                                }
-                            } completion: {
-                                flagTapped(number)
-                            }
+                            flagTapped(number)
                         } label: {
                             Image(countries[number])
                                 .shadow(radius: 5)
                         }
-                        .rotation3DEffect(.degrees(selectedFlag == number ? animationAmount : 0), axis: (x: 0, y: 1, z: 0))
+                        .rotation3DEffect(.degrees(selectedFlag == number ? 360 : 0), axis: (x: 0, y: 1, z: 0))
                         .opacity(selectedFlag == -1 || selectedFlag == number ? 1 : 0.25)
+                        .scaleEffect(selectedFlag == -1 || selectedFlag == number ? 1 : 0.25)
                         .animation(.default, value: selectedFlag)
                     }
                 }
