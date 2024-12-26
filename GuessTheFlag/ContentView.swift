@@ -56,6 +56,7 @@ struct ContentView: View {
                                 .shadow(radius: 5)
                         }
                         .rotation3DEffect(.degrees(selectedFlag == number ? animationAmount : 0), axis: (x: 0, y: 1, z: 0))
+                        .opacity(selectedFlag == -1 || selectedFlag == number ? 1 : 0.25)
                         .animation(.default, value: selectedFlag)
                     }
                 }
